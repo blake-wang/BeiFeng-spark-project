@@ -58,6 +58,7 @@ public class SessionAggrStatAccumulator implements AccumulatorParam<String> {
      */
     @Override
     public String addInPlace(String v1, String v2) {
+
         return add(v1, v2);
     }
 
