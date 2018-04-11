@@ -289,6 +289,7 @@ public class UserVisitSessionAnalyzeSpark {
         sc.close();
     }
 
+
     /**
      * 获取SQLContext
      * 如果是在本地测试环境的话，那么就生成SQLContext对象
