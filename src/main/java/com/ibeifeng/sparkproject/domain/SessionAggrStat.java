@@ -98,6 +98,7 @@ public class SessionAggrStat {
     }
 
     public double getVisit_length_10m_30m_ratio() {
+
         return visit_length_10m_30m_ratio;
     }
 
@@ -106,6 +107,7 @@ public class SessionAggrStat {
     }
 
     public double getVisit_length_30m_ratio() {
+
         return visit_length_30m_ratio;
     }
 
