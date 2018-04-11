@@ -11,6 +11,8 @@ import com.ibeifeng.sparkproject.test.MockData;
 import com.ibeifeng.sparkproject.util.*;
 import it.unimi.dsi.fastutil.ints.IntArrayList;
 import it.unimi.dsi.fastutil.ints.IntList;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 import org.apache.spark.Accumulator;
 import org.apache.spark.SparkConf;
 import org.apache.spark.SparkContext;
@@ -57,7 +59,11 @@ import java.util.*;
 @SuppressWarnings("unused")
 public class UserVisitSessionAnalyzeSpark {
 
+
     public static void main(String[] args) {
+        //设置日志过滤，会过滤掉大部分spark打印的日志，只保留用户自己打印的日志
+        Logger.getLogger("org.apache.spark").setLevel(Level.WARN);
+
         // 构建Spark上下文
         SparkConf conf = new SparkConf()
                 .setAppName(Constants.SPARK_APP_NAME_SESSION)
@@ -249,13 +255,13 @@ public class UserVisitSessionAnalyzeSpark {
          *
          */
 
-        // 获取top10热门品类
-        List<Tuple2<CategorySortKey, String>> top10CategoryList =
-                getTop10Category(task.getTaskid(), sessionid2detailRDD);
-
-        // 获取top10活跃session
-        getTop10Session(sc, task.getTaskid(),
-                top10CategoryList, sessionid2detailRDD);
+//        // 获取top10热门品类
+//        List<Tuple2<CategorySortKey, String>> top10CategoryList =
+//                getTop10Category(task.getTaskid(), sessionid2detailRDD);
+//
+//        // 获取top10活跃session
+//        getTop10Session(sc, task.getTaskid(),
+//                top10CategoryList, sessionid2detailRDD);
 
         // 关闭Spark上下文
         sc.close();
