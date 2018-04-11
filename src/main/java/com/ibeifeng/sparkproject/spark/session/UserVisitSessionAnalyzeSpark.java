@@ -1,60 +1,32 @@
 package com.ibeifeng.sparkproject.spark.session;
 
+import com.alibaba.fastjson.JSONObject;
+import com.google.common.base.Optional;
+import com.ibeifeng.sparkproject.conf.ConfigurationManager;
+import com.ibeifeng.sparkproject.constant.Constants;
+import com.ibeifeng.sparkproject.dao.*;
+import com.ibeifeng.sparkproject.dao.factory.DAOFactory;
+import com.ibeifeng.sparkproject.domain.*;
+import com.ibeifeng.sparkproject.test.MockData;
+import com.ibeifeng.sparkproject.util.*;
 import it.unimi.dsi.fastutil.ints.IntArrayList;
 import it.unimi.dsi.fastutil.ints.IntList;
-
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
-
 import org.apache.spark.Accumulator;
 import org.apache.spark.SparkConf;
 import org.apache.spark.SparkContext;
 import org.apache.spark.api.java.JavaPairRDD;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
-import org.apache.spark.api.java.function.Function;
-import org.apache.spark.api.java.function.Function2;
-import org.apache.spark.api.java.function.PairFlatMapFunction;
-import org.apache.spark.api.java.function.PairFunction;
-import org.apache.spark.api.java.function.VoidFunction;
+import org.apache.spark.api.java.function.*;
 import org.apache.spark.broadcast.Broadcast;
 import org.apache.spark.sql.DataFrame;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SQLContext;
 import org.apache.spark.sql.hive.HiveContext;
 import org.apache.spark.storage.StorageLevel;
-
 import scala.Tuple2;
 
-import com.alibaba.fastjson.JSONObject;
-import com.google.common.base.Optional;
-import com.ibeifeng.sparkproject.conf.ConfigurationManager;
-import com.ibeifeng.sparkproject.constant.Constants;
-import com.ibeifeng.sparkproject.dao.ISessionAggrStatDAO;
-import com.ibeifeng.sparkproject.dao.ISessionDetailDAO;
-import com.ibeifeng.sparkproject.dao.ISessionRandomExtractDAO;
-import com.ibeifeng.sparkproject.dao.ITaskDAO;
-import com.ibeifeng.sparkproject.dao.ITop10CategoryDAO;
-import com.ibeifeng.sparkproject.dao.ITop10SessionDAO;
-import com.ibeifeng.sparkproject.dao.factory.DAOFactory;
-import com.ibeifeng.sparkproject.domain.SessionAggrStat;
-import com.ibeifeng.sparkproject.domain.SessionDetail;
-import com.ibeifeng.sparkproject.domain.SessionRandomExtract;
-import com.ibeifeng.sparkproject.domain.Task;
-import com.ibeifeng.sparkproject.domain.Top10Category;
-import com.ibeifeng.sparkproject.domain.Top10Session;
-import com.ibeifeng.sparkproject.test.MockData;
-import com.ibeifeng.sparkproject.util.DateUtils;
-import com.ibeifeng.sparkproject.util.NumberUtils;
-import com.ibeifeng.sparkproject.util.ParamUtils;
-import com.ibeifeng.sparkproject.util.SparkUtils;
-import com.ibeifeng.sparkproject.util.StringUtils;
-import com.ibeifeng.sparkproject.util.ValidUtils;
+import java.util.*;
 
 /**
  * 用户访问session分析Spark作业
@@ -395,7 +367,7 @@ public class UserVisitSessionAnalyzeSpark {
     /**
      * 对行为数据按session粒度进行聚合
      *
-     * @param actionRDD 行为数据RDD
+     * @param
      * @return session粒度聚合数据
      */
     private static JavaPairRDD<String, String> aggregateBySession(
@@ -1508,8 +1480,8 @@ public class UserVisitSessionAnalyzeSpark {
     /**
      * 获取top10热门品类
      *
-     * @param filteredSessionid2AggrInfoRDD
-     * @param sessionid2actionRDD
+     * @param
+     * @param
      */
     private static List<Tuple2<CategorySortKey, String>> getTop10Category(
             long taskid,
