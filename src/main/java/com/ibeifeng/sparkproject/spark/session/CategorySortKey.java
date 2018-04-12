@@ -20,7 +20,7 @@ import java.io.Serializable;
  */
 public class CategorySortKey implements Ordered<CategorySortKey>, Serializable {
 
-    private static final long serialVersionUID = -6007890914324789180L;
+    private static final long serialVersionUID = -600123123231231213L;
 
     private long clickCount;
     private long orderCount;

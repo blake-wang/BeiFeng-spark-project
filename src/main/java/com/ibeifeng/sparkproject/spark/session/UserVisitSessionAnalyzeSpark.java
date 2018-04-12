@@ -58,11 +58,16 @@ import java.util.*;
  */
 @SuppressWarnings("unused")
 public class UserVisitSessionAnalyzeSpark {
-
+    public static Logger logger = Logger.getLogger(UserVisitSessionAnalyzeSpark.class);
 
     public static void main(String[] args) {
         //设置日志过滤，会过滤掉大部分spark打印的日志，只保留用户自己打印的日志
-        Logger.getLogger("org.apache.spark").setLevel(Level.WARN);
+        Logger logger1 = Logger.getLogger("org.apache.spark");
+        logger1.setLevel(Level.WARN);
+
+        //        Logger logger2 = Logger.getLogger("org.eclipse.jetty.server");
+//        logger2.setLevel(Level.OFF);
+
 
         // 构建Spark上下文
         SparkConf conf = new SparkConf()
@@ -123,7 +128,9 @@ public class UserVisitSessionAnalyzeSpark {
          * 重构完以后，actionRDD，就只在最开始，使用一次，用来生成以sessionid为key的RDD
          *
          */
+        //~~这里获取了第一个最原始的RDD，是所有的用户行为
         JavaRDD<Row> actionRDD = SparkUtils.getActionRDDByDateRange(sqlContext, taskParam);
+        //~~这里从最原始的actionRDD进行了一次转换，生成了以sessionid为key，action为value的键值对RDD
         JavaPairRDD<String, Row> sessionid2actionRDD = getSessionid2ActionRDD(actionRDD);
 
         /**
@@ -235,7 +242,7 @@ public class UserVisitSessionAnalyzeSpark {
          * 		有shuffle的算子，和没有shuffle的算子，甚至性能，会达到几十分钟，甚至数个小时的差别
          * 		有shfufle的算子，很容易导致数据倾斜，一旦数据倾斜，简直就是性能杀手（完整的解决方案）
          * 4、无论做什么功能，性能第一
-         * 		在传统的J2EE或者.NET后者PHP，软件/系统/网站开发中，我认为是架构和可维护性，可扩展性的重要
+         * 		在传统的J2EE或者.NET或者PHP，软件/系统/网站开发中，我认为是架构和可维护性，可扩展性的重要
          * 		程度，远远高于了性能，大量的分布式的架构，设计模式，代码的划分，类的划分（高并发网站除外）
          *
          * 		在大数据项目中，比如MapReduce、Hive、Spark、Storm，我认为性能的重要程度，远远大于一些代码
@@ -255,11 +262,11 @@ public class UserVisitSessionAnalyzeSpark {
          *
          */
 
-//        // 获取top10热门品类
-//        List<Tuple2<CategorySortKey, String>> top10CategoryList =
-//                getTop10Category(task.getTaskid(), sessionid2detailRDD);
-//
-//        // 获取top10活跃session
+        // 获取top10热门品类
+        List<Tuple2<CategorySortKey, String>> top10CategoryList =
+                getTop10Category(task.getTaskid(), sessionid2detailRDD);
+
+        // 获取top10活跃session
 //        getTop10Session(sc, task.getTaskid(),
 //                top10CategoryList, sessionid2detailRDD);
 

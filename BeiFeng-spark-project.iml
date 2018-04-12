@@ -177,5 +177,6 @@
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.4.3" level="project" />
     <orderEntry type="library" name="Maven: com.alibaba:fastjson:1.1.41" level="project" />
     <orderEntry type="library" name="Maven: fastutil:fastutil:5.0.9" level="project" />
+    <orderEntry type="library" name="scala-sdk-2.10.6" level="application" />
   </component>
 </module>

@@ -50,7 +50,7 @@ public class SessionAggrStatAccumulator implements AccumulatorParam<String> {
     /**
      * addInPlace和addAccumulator
      * 可以理解为是一样的
-     * <p>
+     *
      * 这两个方法，其实主要就是实现，v1可能就是我们初始化的那个连接串
      * v2，就是我们在遍历session的时候，判断出某个session对应的区间，然后会用Constants.TIME_PERIOD_1s_3s
      * 所以，我们，要做的事情就是
@@ -64,6 +64,7 @@ public class SessionAggrStatAccumulator implements AccumulatorParam<String> {
 
     @Override
     public String addAccumulator(String v1, String v2) {
+
         return add(v1, v2);
     }
 
