@@ -32,6 +32,7 @@ public class CategorySortKey implements Ordered<CategorySortKey>, Serializable {
         this.payCount = payCount;
     }
 
+    //大于
     @Override
     public boolean $greater(CategorySortKey other) {
         if (clickCount > other.getClickCount()) {
@@ -47,6 +48,7 @@ public class CategorySortKey implements Ordered<CategorySortKey>, Serializable {
         return false;
     }
 
+    //大于等于
     @Override
     public boolean $greater$eq(CategorySortKey other) {
         if ($greater(other)) {
@@ -59,6 +61,7 @@ public class CategorySortKey implements Ordered<CategorySortKey>, Serializable {
         return false;
     }
 
+    //小于
     @Override
     public boolean $less(CategorySortKey other) {
         if (clickCount < other.getClickCount()) {
@@ -74,6 +77,7 @@ public class CategorySortKey implements Ordered<CategorySortKey>, Serializable {
         return false;
     }
 
+    //小于等于
     @Override
     public boolean $less$eq(CategorySortKey other) {
         if ($less(other)) {
@@ -86,6 +90,8 @@ public class CategorySortKey implements Ordered<CategorySortKey>, Serializable {
         return false;
     }
 
+
+    //compare和compareTo 两个方法的实现是一模一样的
     @Override
     public int compare(CategorySortKey other) {
         if (clickCount - other.getClickCount() != 0) {
@@ -111,6 +117,7 @@ public class CategorySortKey implements Ordered<CategorySortKey>, Serializable {
     }
 
     public long getClickCount() {
+
         return clickCount;
     }
 
@@ -119,10 +126,12 @@ public class CategorySortKey implements Ordered<CategorySortKey>, Serializable {
     }
 
     public long getOrderCount() {
+
         return orderCount;
     }
 
     public void setOrderCount(long orderCount) {
+
         this.orderCount = orderCount;
     }
 
@@ -131,6 +140,7 @@ public class CategorySortKey implements Ordered<CategorySortKey>, Serializable {
     }
 
     public void setPayCount(long payCount) {
+
         this.payCount = payCount;
     }
 
