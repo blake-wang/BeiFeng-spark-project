@@ -267,8 +267,8 @@ public class UserVisitSessionAnalyzeSpark {
                 getTop10Category(task.getTaskid(), sessionid2detailRDD);
 
         // 获取top10活跃session
-//        getTop10Session(sc, task.getTaskid(),
-//                top10CategoryList, sessionid2detailRDD);
+        getTop10Session(sc, task.getTaskid(),
+                top10CategoryList, sessionid2detailRDD);
 
         // 关闭Spark上下文
         sc.close();
