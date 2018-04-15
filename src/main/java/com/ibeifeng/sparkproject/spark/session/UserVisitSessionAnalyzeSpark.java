@@ -73,10 +73,10 @@ public class UserVisitSessionAnalyzeSpark {
         SparkConf conf = new SparkConf()
                 .setAppName(Constants.SPARK_APP_NAME_SESSION)
 //				.set("spark.default.parallelism", "100")
-                .set("spark.storage.memoryFraction", "0.5")
-                .set("spark.shuffle.consolidateFiles", "true")
-                .set("spark.shuffle.file.buffer", "64")
-                .set("spark.shuffle.memoryFraction", "0.3")
+                .set("spark.storage.memoryFraction", "0.5")//默认0.6
+                .set("spark.shuffle.consolidateFiles", "true")//map端合并小文件
+                .set("spark.shuffle.file.buffer", "64")//默认32kb
+                .set("spark.shuffle.memoryFraction", "0.3")//默认0.2
                 .set("spark.reducer.maxSizeInFlight", "24")
                 .set("spark.shuffle.io.maxRetries", "60")
                 .set("spark.shuffle.io.retryWait", "60")
