@@ -62,8 +62,8 @@ public class UserVisitSessionAnalyzeSpark {
 
     public static void main(String[] args) {
         //设置日志过滤，会过滤掉大部分spark打印的日志，只保留用户自己打印的日志
-        Logger logger1 = Logger.getLogger("org.apache.spark");
-        logger1.setLevel(Level.WARN);
+//        Logger logger = Logger.getLogger("org.apache.spark");
+//        logger.setLevel(Level.WARN);
 
         //        Logger logger2 = Logger.getLogger("org.eclipse.jetty.server");
 //        logger2.setLevel(Level.OFF);
